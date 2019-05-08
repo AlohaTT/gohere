@@ -1,21 +1,44 @@
-import React, { Component, } from 'react';
-import { View, Text, } from 'react-native';
-import PropTypes from 'prop-types';
+import { createMaterialTopTabNavigator, } from 'react-navigation';
+import VideoPage from './VideoPage';
+import RankPage from './RankPage';
+import TourPage from './TourPage';
 import { connect, } from 'react-redux';
+import { ColorFlags, } from '../../res/style/ThemeFactory';
 
-class HomePage extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  }
+const HomeTab = createMaterialTopTabNavigator({
+  Video: {
+    screen: VideoPage,
+    navigationOptions:{
+      tabBarLabel: '这好玩',
+    },
+  },
+  Rank: {
+    screen: RankPage,
+    navigationOptions:{
+      tabBarLabel: '那座城',
+    },
+  },
+  Tour: {
+    screen: TourPage,
+    navigationOptions:{
+      tabBarLabel: '一键启程',
+    },
+  },
+},{
+  tabBarOptions:{
+    style:{
+      backgroundColor:ColorFlags,
+    },
+    labelStyle:{
+      color:ColorFlags.Black,
+    },
+    indicatorStyle:{
+      backgroundColor:ColorFlags.Green,
 
-  render() {
-    return (
-      <View>
-        <Text> HomePage </Text>
-      </View>
-    );
-  }
-}
+    },
+  },
+});
+
 
 const mapStateToProps = (state) => ({
 
@@ -25,4 +48,4 @@ const mapDispatchToProps = {
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeTab);

@@ -8,7 +8,7 @@ import VipRightsPage from '../page/VipRightsPage';
 import TradePage from '../page/TradePage';
 import MinePage from '../page/MinePage';
 import { createBottomTabNavigator, createAppContainer, } from 'react-navigation';
-import { ThemeFlags, DimenFlags, } from '../../res/style/ThemeFactory';
+import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
 
 const TABS = {
   Home: {
@@ -82,7 +82,7 @@ class MainTabNavigator extends Component {
     return createAppContainer(createBottomTabNavigator(TABS,
       {
         tabBarOptions: {
-          activeTintColor: ThemeFlags.Green,
+          activeTintColor: ColorFlags.Green,
           showIcon: true,
           labelStyle: styles.label,
         },

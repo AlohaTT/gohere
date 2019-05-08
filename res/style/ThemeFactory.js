@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export const ThemeFlags = {
+export const ColorFlags = {
   Default: '#4caf50',
   Red: '#F44336',
   Pink: '#E91E63',
@@ -30,6 +30,7 @@ export const ThemeFlags = {
   Grey: '#9E9E9E',
   BlueGrey: '#607D8B',
   Black: '#000000',
+  White: '#FFFFFF',
 };
 
 export const DimenFlags ={
