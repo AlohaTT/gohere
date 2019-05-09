@@ -1,8 +1,8 @@
 import { combineReducers, } from 'redux';
 import { navReducer, } from '../navigator/AppNavigators';
-import loginReducer from './login/index';
+import userReducer from './user/index';
 
 export default combineReducers({
   nav:navReducer,
-  login:loginReducer,
+  user:userReducer,
 });

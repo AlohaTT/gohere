@@ -3,11 +3,9 @@ import { View, Text, StyleSheet, Image, } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 import { ListView, WingBlank, WhiteSpace, } from '@ant-design/react-native';
-import FetchUtil from '../util/FetchUtil';
-import Page from '../bean/Page';
 import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
-import Api from '../api/Api';
 import BaseListComponent from '../base/BaseListComponent';
+import TourService from '../api/service/TourService';
 
 class TourPage extends Component {
 
@@ -19,7 +17,7 @@ class TourPage extends Component {
     return (
       <BaseListComponent
         renderItem={this._renderItem}
-        url={Api.TRAVELLIST}
+        url={TourService.TRAVELLIST}
       />
     );
   }

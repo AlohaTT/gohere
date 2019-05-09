@@ -1,3 +1,3 @@
 export default {
-  CHECK_LOGIN:'CHECK_LOGIN',
+  USER_UPDATE:'USER_UPDATE',
 };

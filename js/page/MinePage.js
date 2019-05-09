@@ -142,13 +142,17 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const mapStateToProps = (state) => ({
-  isLogin: state.login.isLogin,
+  isLogin: state.user.isLogin,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
   onLoginStateChanged: () => dispatch(action.onLoginStateChange()),
+  onUserInfoUpdate:() => {
+    dispatch(action.onUserInfoUpdate());
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MinePage);

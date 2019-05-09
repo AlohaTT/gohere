@@ -2,11 +2,9 @@ import React, { Component, } from 'react';
 import { View, Text, Image, StyleSheet, } from 'react-native';
 import { connect, } from 'react-redux';
 import { ListView, WingBlank, WhiteSpace, } from '@ant-design/react-native';
-import FetchUtil from '../util/FetchUtil';
-import Page from '../bean/Page';
 import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
 import BaseListComponent from '../base/BaseListComponent';
-import Api from '../api/Api';
+import VideoService from '../api/service/VideoService';
 
 class VideoPage extends Component {
   render() {
@@ -15,7 +13,7 @@ class VideoPage extends Component {
         renderItem={(data) => {
           return <Item data={data} />;
         }}
-        url={Api.VIDEOLIST}
+        url={VideoService.VIDEOLIST}
       />
     );
   }
