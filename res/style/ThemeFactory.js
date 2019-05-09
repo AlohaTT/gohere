@@ -35,6 +35,7 @@ export const ColorFlags = {
 
 export const DimenFlags ={
   MainSize: 12,
+  HorizontalMargin:8,
 };
 
 export default class ThemeFactory {

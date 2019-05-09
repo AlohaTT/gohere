@@ -2,8 +2,7 @@ import React, { Component, } from 'react';
 import { View, Text, } from 'react-native';
 import { connect, } from 'react-redux';
 
-class TradePage extends Component {
-
+export class LoginPage extends Component {
   render() {
     return (
       <View>
@@ -21,4 +20,4 @@ const mapDispatchToProps = {
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TradePage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

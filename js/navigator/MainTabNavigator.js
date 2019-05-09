@@ -1,6 +1,5 @@
 import React, { Component, } from 'react';
 import { View, Text, StyleSheet, Image, } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 import HomePage from '../page/HomePage';
 import ConsumePage from '../page/ConsumePage';
@@ -74,10 +73,6 @@ const TABS = {
 };
 
 class MainTabNavigator extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  }
-
   _renderTabs = () => {
     return createAppContainer(createBottomTabNavigator(TABS,
       {

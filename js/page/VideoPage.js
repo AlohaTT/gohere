@@ -1,6 +1,5 @@
 import React, { Component, } from 'react';
 import { View, Text, Image, StyleSheet, } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 import { ListView, WingBlank, WhiteSpace, } from '@ant-design/react-native';
 import FetchUtil from '../util/FetchUtil';

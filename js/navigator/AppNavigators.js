@@ -4,6 +4,7 @@ import SplashPage from '../page/SplashPage';
 import { createNavigationReducer, createReduxContainer, createReactNavigationReduxMiddleware, } from 'react-navigation-redux-helpers';
 import { connect, } from 'react-redux';
 import MainPage from '../page/MainPage';
+import { LoginPage, } from '../page/LoginPage';
 
 const MainNavigator = createStackNavigator({
   Main: {
@@ -11,6 +12,9 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       header: null,
     },
+  },
+  Login:{
+    screen:LoginPage,
   },
 });
 

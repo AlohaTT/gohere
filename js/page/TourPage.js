@@ -10,9 +10,6 @@ import Api from '../api/Api';
 import BaseListComponent from '../base/BaseListComponent';
 
 class TourPage extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  }
 
   _renderItem = (data) => {
     return <Item data={data} />;

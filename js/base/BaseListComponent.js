@@ -2,8 +2,8 @@ import React, { Component, } from 'react';
 import { StyleSheet, } from 'react-native';
 import PropTypes from 'prop-types';
 import { ListView, } from '@ant-design/react-native';
-import FetchUtil from '../util/FetchUtil';
 import Page from '../bean/Page';
+import { fetchData, } from '../util/FetchUtil';
 
 export default class BaseListComponent extends Component {
   static propTypes = {
@@ -12,7 +12,7 @@ export default class BaseListComponent extends Component {
   }
 
   _onFetch = (page = 1, startFetch, abortFetch) => {
-    FetchUtil.fetch(this.props.url, new Page(page))
+    fetchData(this.props.url, new Page(page))
       .then((res) => {
         const { result, } = res;
         let rowData = Array.from(result);
