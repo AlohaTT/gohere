@@ -1,6 +1,11 @@
+import { BASE_URL, } from '../api/Api';
+import Page from '../bean/Page';
+
+const DEFAULT_URL = BASE_URL;
 export default class FetchUtil {
 
-  static fetch(url, param={}) {
+  static fetch(url, param = {}) {
+    url = DEFAULT_URL +url;
     return fetch(url, {
       body: JSON.stringify(param),
       method: 'POST',

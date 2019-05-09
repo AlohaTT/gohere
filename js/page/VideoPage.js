@@ -6,40 +6,18 @@ import { ListView, WingBlank, WhiteSpace, } from '@ant-design/react-native';
 import FetchUtil from '../util/FetchUtil';
 import Page from '../bean/Page';
 import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
+import BaseListComponent from '../base/BaseListComponent';
+import Api from '../api/Api';
 
 class VideoPage extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  }
-
-  _onFetch = (page = 1, startFetch, abortFetch) => {
-    FetchUtil.fetch('http://203.110.179.27:60409/lyjfapp/api/v1/video/homeImage/list', new Page(page))
-      .then((res) => {
-        const { result, } = res;
-        let rowData = Array.from(result);
-        if (page > res.totalPage) {
-          rowData = [];
-        }
-        startFetch(rowData);
-      }).catch((err) => {
-        abortFetch();
-      }
-      );
-  }
-
-  _renderItem = (data) => {
-    return <Item data={data} />;
-  }
-
-
   render() {
     return (
-      <WingBlank size="sm">
-        <ListView
-          onFetch={this._onFetch}
-          renderItem={this._renderItem}
-        />
-      </WingBlank>
+      <BaseListComponent
+        renderItem={(data) => {
+          return <Item data={data} />;
+        }}
+        url={Api.VIDEOLIST}
+      />
     );
   }
 }
@@ -48,7 +26,7 @@ class Item extends Component {
   render() {
     const { homeImageUrl, videoDesc, } = this.props.data;
     return (
-      <View>
+      <WingBlank>
         <Image
           source={{ uri: homeImageUrl, }}
           style={styles.image}
@@ -60,9 +38,7 @@ class Item extends Component {
           >{videoDesc}</Text>
         </WingBlank>
         <WhiteSpace />
-
-      </View>
-
+      </WingBlank>
     );
   }
 }

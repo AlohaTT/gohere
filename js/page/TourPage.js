@@ -6,25 +6,12 @@ import { ListView, WingBlank, WhiteSpace, } from '@ant-design/react-native';
 import FetchUtil from '../util/FetchUtil';
 import Page from '../bean/Page';
 import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
+import Api from '../api/Api';
+import BaseListComponent from '../base/BaseListComponent';
 
 class TourPage extends Component {
   static propTypes = {
     prop: PropTypes,
-  }
-
-  _onFetch = (page = 1, startFetch, abortFetch) => {
-    FetchUtil.fetch('http://203.110.179.27:60409/lyjfapp/api/v1/travel/findByCondition', new Page(page))
-      .then((res) => {
-        const { result, } = res;
-        let rowData = Array.from(result);
-        if (page > res.totalPage) {
-          rowData = [];
-        }
-        startFetch(rowData);
-      }).catch((err) => {
-        abortFetch();
-      }
-      );
   }
 
   _renderItem = (data) => {
@@ -33,12 +20,10 @@ class TourPage extends Component {
 
   render() {
     return (
-      <WingBlank size="sm">
-        <ListView
-          onFetch={this._onFetch}
-          renderItem={this._renderItem}
-        />
-      </WingBlank>
+      <BaseListComponent
+        renderItem={this._renderItem}
+        url={Api.TRAVELLIST}
+      />
     );
   }
 }
@@ -47,7 +32,7 @@ class Item extends Component {
   render() {
     const { imageList, travelName, } = this.props.data;
     return (
-      <View>
+      <WingBlank>
         <Image
           source={{ uri: imageList && imageList.length > 0 && imageList[0].url, }}
           style={styles.image}
@@ -60,7 +45,7 @@ class Item extends Component {
         </WingBlank>
         <WhiteSpace />
 
-      </View>
+      </WingBlank>
 
     );
   }
