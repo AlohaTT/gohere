@@ -4,9 +4,7 @@ import { connect, } from 'react-redux';
 import { InputItem, WingBlank, WhiteSpace, Button, } from '@ant-design/react-native';
 import { ColorFlags, } from '../../res/style/ThemeFactory';
 import action from '../action';
-import { fetchData, } from '../util/FetchUtil';
 import NavigationUtil from '../util/NavigationUtil';
-import UserService from '../api/service/UserService';
 
 export class LoginPage extends Component {
 
@@ -19,19 +17,20 @@ export class LoginPage extends Component {
     };
   }
 
+  componentDidMount() {
+
+  }
+
   _onPress = () => {
-    fetchData(UserService.LOGIN, {
+    const { login,navigation, } = this.props;
+    login({
       userName: this.state.phone,
       password: this.state.password,
       userType: 'member',
-    }).then((data) => {
-      NavigationUtil.goBack(this.props.navigation);
-    }
-    );
+    }, navigation);
   }
 
   render() {
-    const { onUserInfoUpdate, } = this.props;
     return (
       <WingBlank>
         <Text style={[styles.title, { marginTop: 48, },]}>Hi,</Text>
@@ -83,6 +82,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  login: (params, navigation) => {
+    dispatch(action.login(params,navigation));
+  },
   onUserInfoUpdate: () => {
     dispatch(action.onUserInfoUpdate());
   },

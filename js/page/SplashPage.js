@@ -1,13 +1,13 @@
 import React, { Component, } from 'react';
-import { View, Text, } from 'react-native';
+import { View, Text,ImageBackground, Image,} from 'react-native';
 import { connect, } from 'react-redux';
 import NavigationUtil from '../util/NavigationUtil';
 
-export default  class SplashPage extends Component {
+export default class SplashPage extends Component {
 
   componentDidMount() {
     this.timer = setTimeout(() => {
-      NavigationUtil.resetToHomPage({
+      NavigationUtil.resetToMainPage({
         navigation: this.props.navigation,
       });
     }, 200);
@@ -19,9 +19,10 @@ export default  class SplashPage extends Component {
 
   render() {
     return (
-      <View>
-        <Text> Splash </Text>
-      </View>
+      <Image source={require('../../res/drawable/app_splash.webp')}
+        style={{ width: '100%', height: '100%',}}
+      >
+      </Image>
     );
   }
 }

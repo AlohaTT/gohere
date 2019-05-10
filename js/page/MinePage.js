@@ -7,6 +7,7 @@ import { WhiteSpace, WingBlank, Button, } from '@ant-design/react-native';
 import action from '../action';
 import RouteHub from '../RouteHub';
 import NavigationUtil from '../util/NavigationUtil';
+import ImageText from '../components/ImageText';
 
 class MinePage extends Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class MinePage extends Component {
   }
 
   _loginPress = () => {
-    NavigationUtil.goPage({},RouteHub.LOGIN);
+    NavigationUtil.goPage({}, RouteHub.LOGIN);
   }
 
   render() {
@@ -26,13 +27,28 @@ class MinePage extends Component {
       }
       return <UnLoginHeader
         onPress={this._loginPress}
-      />;
+             />;
     };
 
 
     return (
       <View style={[styles.container, { paddingTop: 32, },]}>
         <Header />
+        <View style={[styles.row, { justifyContent: 'space-between', },]}>
+          <ImageText
+            text={'全部订单'}
+          />
+          <ImageText
+            text={'待出行'}
+          />
+          <ImageText
+            text={'待支付'}
+          />
+          <ImageText
+            text={'退款单'}
+          />
+        </View>
+
 
       </View>
     );
@@ -42,7 +58,7 @@ class MinePage extends Component {
 class LoginHeader extends Component {
   render() {
     return (
-      <View style={[styles.container, { paddingHorizontal: DimenFlags.HorizontalMargin, },]}>
+      <View style={{ paddingHorizontal: DimenFlags.HorizontalMargin, }}>
         <View style={[styles.row, { marginBottom: 23, },]}>
           <WingBlank>
             <Image source={require('../../res/drawable/ic_avater.png')}
@@ -149,7 +165,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   onLoginStateChanged: () => dispatch(action.onLoginStateChange()),
-  onUserInfoUpdate:() => {
+  onUserInfoUpdate: () => {
     dispatch(action.onUserInfoUpdate());
   },
 
