@@ -1,10 +1,11 @@
 import React, { Component, } from 'react';
-import { View, Text, StyleSheet, } from 'react-native';
+import { View, Text, StyleSheet, AsyncStorage, } from 'react-native';
 import { connect, } from 'react-redux';
 import { InputItem, WingBlank, WhiteSpace, Button, } from '@ant-design/react-native';
 import { ColorFlags, } from '../../res/style/ThemeFactory';
 import action from '../action';
 import NavigationUtil from '../util/NavigationUtil';
+import Constants from '../Constants';
 
 export class LoginPage extends Component {
 
@@ -18,11 +19,16 @@ export class LoginPage extends Component {
   }
 
   componentDidMount() {
-
+    AsyncStorage.getItem(Constants.USERNAME)
+      .then((res) => {
+        this.setState({
+          phone:res,
+        });
+      });
   }
 
   _onPress = () => {
-    const { login,navigation, } = this.props;
+    const { login, navigation, } = this.props;
     login({
       userName: this.state.phone,
       password: this.state.password,
@@ -44,6 +50,7 @@ export class LoginPage extends Component {
           }
           placeholder={'请输入手机号'}
           type={'digit'}
+          value={this.state.phone}
         >
           +86
         </InputItem>
@@ -83,10 +90,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: (params, navigation) => {
-    dispatch(action.login(params,navigation));
-  },
-  onUserInfoUpdate: () => {
-    dispatch(action.onUserInfoUpdate());
+    dispatch(action.login(params, navigation));
   },
 });
 

@@ -1,6 +1,6 @@
-import {onLoginStateChange,onUserInfoUpdate,login,} from './user/index';
+import {checkLogin,onUserInfoUpdate,login,} from './user/index';
 export default {
-  onLoginStateChange,
+  checkLogin,
   onUserInfoUpdate,
   login,
 };

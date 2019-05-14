@@ -11,8 +11,8 @@ import ImageText from '../components/ImageText';
 
 class MinePage extends Component {
   componentDidMount() {
-    const { onLoginStateChanged, } = this.props;
-    onLoginStateChanged();
+    const { checkLogin, } = this.props;
+    checkLogin();
   }
 
   _loginPress = () => {
@@ -20,17 +20,15 @@ class MinePage extends Component {
   }
 
   render() {
-    const { isLogin, } = this.props;
+    const { userInfo, } = this.props;
     const Header = () => {
-      if (isLogin) {
+      if (userInfo&&JSON.stringify(userInfo) != '{}') {
         return <LoginHeader />;
       }
       return <UnLoginHeader
         onPress={this._loginPress}
              />;
     };
-
-
     return (
       <View style={[styles.container, { paddingTop: 32, },]}>
         <Header />
@@ -48,8 +46,6 @@ class MinePage extends Component {
             text={'退款单'}
           />
         </View>
-
-
       </View>
     );
   }
@@ -159,15 +155,11 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  isLogin: state.user.isLogin,
   userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoginStateChanged: () => dispatch(action.onLoginStateChange()),
-  onUserInfoUpdate: () => {
-    dispatch(action.onUserInfoUpdate());
-  },
+  checkLogin: () => dispatch(action.checkLogin()),
 
 });
 
