@@ -6,6 +6,7 @@ import { connect, } from 'react-redux';
 import MainPage from '../page/MainPage';
 import LoginPage from '../page/LoginPage';
 import TestPage from '../page/TestPage';
+import SettingPage from '../page/SettingPage';
 
 const MainNavigator = createStackNavigator({
   Main: {
@@ -16,6 +17,12 @@ const MainNavigator = createStackNavigator({
   },
   Login:{
     screen:LoginPage,
+  },
+  Setting:{
+    screen:SettingPage,
+    navigationOptions: {
+      title: '设置',
+    },
   },
   Test:{
     screen:TestPage,

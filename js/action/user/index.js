@@ -1,6 +1,6 @@
 import type from '../type';
 import { fetchData, } from '../../util/FetchUtil';
-import Userservice from '../../api/service/UserService';
+import UserService from '../../api/service/UserService';
 import NavigationUtil from '../../util/NavigationUtil';
 import { AsyncStorage, } from 'react-native';
 import Constants from '../../Constants';
@@ -12,7 +12,7 @@ import Constants from '../../Constants';
 */
 export function checkLogin() {
   return (dispatch) => {
-    fetchData(Userservice.ISLOGIN)
+    fetchData(UserService.ISLOGIN)
       .then(isLogin => {
         if (isLogin === 1) {
           onUserInfoUpdate(dispatch);
@@ -28,7 +28,7 @@ export function checkLogin() {
  * 获取用户信息
  */
 export function onUserInfoUpdate(dispatch) {
-  return fetchData(Userservice.GETUSERINFO)
+  return fetchData(UserService.GETUSERINFO)
     .then((userInfo) => {
       dispatch({ type: type.USER_UPDATE, userInfo: userInfo, });
     });
@@ -42,7 +42,7 @@ export function login(params, navigation) {
   return (dispatch) => {
     const { userName, } = params;
     _storeUsername(userName)
-      .then(fetchData(Userservice.LOGIN, params)
+      .then(fetchData(UserService.LOGIN, params)
         .then((token) => {
           /**
           |--------------------------------------------------
@@ -64,3 +64,13 @@ const _storeUsername = async (username) => {
   await AsyncStorage.setItem(Constants.USERNAME, username);
 };
 
+export function logout(navigation) {
+  return (dispatch) => {
+    fetchData(UserService.LOGOUT)
+      .then(() => {
+        NavigationUtil.goBack(navigation);
+        dispatch({type:type.USER_UPDATE,userInfo:null,});
+      });
+  };
+
+}

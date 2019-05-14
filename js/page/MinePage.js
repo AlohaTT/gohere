@@ -1,5 +1,5 @@
 import React, { Component, } from 'react';
-import { View, Text, StyleSheet, Image, } from 'react-native';
+import { View, Text, StyleSheet, Image,TouchableOpacity, } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 import ThemeFactory, { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
@@ -20,9 +20,9 @@ class MinePage extends Component {
   }
 
   render() {
-    const { userInfo, } = this.props;
+    const { userInfo, navigation, } = this.props;
     const Header = () => {
-      if (userInfo&&JSON.stringify(userInfo) != '{}') {
+      if (userInfo && JSON.stringify(userInfo) != '{}') {
         return <LoginHeader />;
       }
       return <UnLoginHeader
@@ -52,6 +52,10 @@ class MinePage extends Component {
 }
 
 class LoginHeader extends Component {
+  static propTypes = {
+    settingPress: PropTypes.func,
+  }
+
   render() {
     return (
       <View style={{ paddingHorizontal: DimenFlags.HorizontalMargin, }}>
@@ -73,10 +77,13 @@ class LoginHeader extends Component {
             <Text style={{ fontSize: 12, color: ColorFlags.Grey, }}>UID:62562356</Text>
           </View>
 
-          <Image
-            source={require('../../res/drawable/ic_setting.png')}
-            style={[styles.imageButton, { marginRight: 17, },]}
-          />
+          <TouchableOpacity onPress={()=>{NavigationUtil.goPage({},RouteHub.SETTING);}}>
+            <Image
+              source={require('../../res/drawable/ic_setting.png')}
+              style={[styles.imageButton, { marginRight: 17, },]}
+            />
+          </TouchableOpacity>
+
           <Image
             source={require('../../res/drawable/ic_message.png')}
             style={styles.imageButton}
@@ -113,7 +120,6 @@ class UnLoginHeader extends Component {
   static propTypes = {
     onPress: PropTypes.func,
   }
-
 
   render() {
     return (
