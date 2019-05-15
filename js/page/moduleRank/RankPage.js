@@ -2,8 +2,8 @@ import React, { Component, } from 'react';
 import { View, Text, StyleSheet, Image, } from 'react-native';
 import { connect, } from 'react-redux';
 import { FlatList, } from 'react-native-gesture-handler';
-import { fetchData, } from '../util/FetchUtil';
-import RankService from '../api/service/RankService';
+import { fetchData, } from '../../util/FetchUtil';
+import RankService from '../../api/service/RankService';
 import { ColorFlags, } from '../../res/style/ThemeFactory';
 
 class RankPage extends Component {

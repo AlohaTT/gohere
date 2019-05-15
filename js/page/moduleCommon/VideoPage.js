@@ -3,8 +3,8 @@ import { View, Text, Image, StyleSheet, } from 'react-native';
 import { connect, } from 'react-redux';
 import { ListView, WingBlank, WhiteSpace, } from '@ant-design/react-native';
 import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
-import BaseListComponent from '../base/BaseListComponent';
-import VideoService from '../api/service/VideoService';
+import BaseListComponent from '../../components/BaseListComponent';
+import VideoService from '../../api/service/VideoService';
 
 class VideoPage extends Component {
   render() {

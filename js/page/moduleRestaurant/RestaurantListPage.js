@@ -1,15 +1,13 @@
-/*
- * @Author: Tony
- * @Date: 2019-05-10 17:48:42
- * @Last Modified by:   Tony
- * @Last Modified time: 2019-05-10 17:48:42
- */
 import React, { Component, } from 'react';
 import { View, Text, } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 
-export class HotelListPage extends Component {
+class RestaurantListPage extends Component {
+  static propTypes = {
+    prop: PropTypes,
+  }
+
   render() {
     return (
       <View>
@@ -27,4 +25,4 @@ const mapDispatchToProps = {
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HotelListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantListPage);

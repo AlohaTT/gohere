@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import { View, Text,ImageBackground, Image,} from 'react-native';
 import { connect, } from 'react-redux';
-import NavigationUtil from '../util/NavigationUtil';
+import NavigationUtil from '../../util/NavigationUtil';
 
 export default class SplashPage extends Component {
 

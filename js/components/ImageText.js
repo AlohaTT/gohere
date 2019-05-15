@@ -22,7 +22,7 @@ export default class ImageText extends Component {
         <Image
           height={this.props.height}
           onPress={this.props.onPress}
-          source={require('../../res/drawable/user_all_orders.png')}
+          source={require('../res/drawable/user_all_orders.png')}
           style={{ resizeMode: 'contain', }}
           width={this.props.width}
         />

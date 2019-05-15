@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, AsyncStorage, } from 'react-native';
 import { connect, } from 'react-redux';
 import { InputItem, WingBlank, WhiteSpace, Button, } from '@ant-design/react-native';
 import { ColorFlags, } from '../../res/style/ThemeFactory';
-import action from '../action';
-import NavigationUtil from '../util/NavigationUtil';
-import Constants from '../Constants';
+import action from '../../action';
+import NavigationUtil from '../../util/NavigationUtil';
+import Constants from '../../Constants';
 
 export class LoginPage extends Component {
 

@@ -1,7 +1,7 @@
 import { createMaterialTopTabNavigator, } from 'react-navigation';
-import VideoPage from './VideoPage';
-import RankPage from './RankPage';
-import TourPage from './TourPage';
+import VideoPage from '../moduleCommon/VideoPage';
+import RankPage from '../moduleRank/RankPage';
+import TourPage from '../moduleTour/TourPage';
 import { connect, } from 'react-redux';
 import { ColorFlags, } from '../../res/style/ThemeFactory';
 
@@ -27,7 +27,7 @@ const HomeTab = createMaterialTopTabNavigator({
 },{
   tabBarOptions:{
     style:{
-      backgroundColor:ColorFlags,
+      backgroundColor:ColorFlags.White,
     },
     labelStyle:{
       color:ColorFlags.Black,

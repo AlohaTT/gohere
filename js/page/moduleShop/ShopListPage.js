@@ -3,7 +3,7 @@ import { View, Text, } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 
-class ConsumePage extends Component {
+class ShopListPage extends Component {
   static propTypes = {
     prop: PropTypes,
   }
@@ -25,4 +25,4 @@ const mapDispatchToProps = {
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConsumePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ShopListPage);

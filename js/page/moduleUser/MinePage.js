@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 import ThemeFactory, { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
 import { WhiteSpace, WingBlank, Button, } from '@ant-design/react-native';
-import action from '../action';
-import RouteHub from '../RouteHub';
-import NavigationUtil from '../util/NavigationUtil';
-import ImageText from '../components/ImageText';
+import action from '../../action';
+import RouteHub from '../../RouteHub';
+import NavigationUtil from '../../util/NavigationUtil';
+import ImageText from '../../components/ImageText';
 
 class MinePage extends Component {
   componentDidMount() {

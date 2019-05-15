@@ -1,13 +1,13 @@
 import React, { Component, } from 'react';
 import { View, Text, StyleSheet, Image, } from 'react-native';
 import { connect, } from 'react-redux';
-import HomePage from '../page/HomePage';
-import ConsumePage from '../page/ConsumePage';
-import VipRightsPage from '../page/VipRightsPage';
-import TradePage from '../page/TradePage';
-import MinePage from '../page/MinePage';
+import HomePage from '../page/app/HomePage';
+import ConsumePage from '../page/app/ConsumePage';
+import VipRightsPage from '../page/moduleUser/VipRightsPage';
+import TradePage from '../page/moduleTrade/TradePage';
+import MinePage from '../page/moduleUser/MinePage';
 import { createBottomTabNavigator, createAppContainer, } from 'react-navigation';
-import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
+import { ColorFlags, DimenFlags, } from '../res/style/ThemeFactory';
 
 const TABS = {
   Home: {
@@ -16,7 +16,7 @@ const TABS = {
       tabBarLabel: '首页',
       tabBarIcon: ({ focused, tintColor, }) => (
         <Image
-          source={require('../../res/drawable/ic_home.png')}
+          source={require('../res/drawable/ic_home.png')}
           style={[styles.icon, { tintColor: tintColor, },]}
         />
       ),
@@ -28,7 +28,7 @@ const TABS = {
       tabBarLabel: '去玩',
       tabBarIcon: ({ focused, tintColor, }) => (
         <Image
-          source={require('../../res/drawable/ic_consume.png')}
+          source={require('../res/drawable/ic_consume.png')}
           style={[styles.icon, { tintColor: tintColor, },]}
         />
       ),
@@ -39,7 +39,7 @@ const TABS = {
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor, }) => (
         <Image
-          source={require('../../res/drawable/ic_vip.png')}
+          source={require('../res/drawable/ic_vip.png')}
           style={[styles.icon, { tintColor: tintColor, },]}
         />
       ),
@@ -52,7 +52,7 @@ const TABS = {
       tabBarLabel: '玩贝',
       tabBarIcon: ({ focused, tintColor, }) => (
         <Image
-          source={require('../../res/drawable/ic_trade.png')}
+          source={require('../res/drawable/ic_trade.png')}
           style={[styles.icon, { tintColor: tintColor, },]}
         />
       ),
@@ -64,7 +64,7 @@ const TABS = {
       tabBarLabel: '我的',
       tabBarIcon: ({ focused, tintColor, }) => (
         <Image
-          source={require('../../res/drawable/ic_mine.png')}
+          source={require('../res/drawable/ic_mine.png')}
           style={[styles.icon, { tintColor: tintColor, },]}
         />
       ),

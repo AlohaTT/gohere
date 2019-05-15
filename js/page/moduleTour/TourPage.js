@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 import { ListView, WingBlank, WhiteSpace, } from '@ant-design/react-native';
 import { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
-import BaseListComponent from '../base/BaseListComponent';
-import TourService from '../api/service/TourService';
+import BaseListComponent from '../../components/BaseListComponent';
+import TourService from '../../api/service/TourService';
 
 class TourPage extends Component {
 

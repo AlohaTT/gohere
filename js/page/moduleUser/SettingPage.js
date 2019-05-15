@@ -5,7 +5,7 @@ import { connect, } from 'react-redux';
 import { List, Button, } from '@ant-design/react-native';
 import Item from '@ant-design/react-native/lib/list/ListItem';
 import DeviceInfo from 'react-native-device-info';
-import action from '../action/index';
+import action from '../../action/index';
 
 class SettingPage extends Component {
   static propTypes = {

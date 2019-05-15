@@ -1,12 +1,12 @@
 import { createStackNavigator, createSwitchNavigator, createAppContainer, } from 'react-navigation';
-import HomePage from '../page/HomePage';
-import SplashPage from '../page/SplashPage';
+import HomePage from '../page/app/HomePage';
+import SplashPage from '../page/app/SplashPage';
 import { createNavigationReducer, createReduxContainer, createReactNavigationReduxMiddleware, } from 'react-navigation-redux-helpers';
 import { connect, } from 'react-redux';
-import MainPage from '../page/MainPage';
-import LoginPage from '../page/LoginPage';
+import MainPage from '../page/app/MainPage';
+import LoginPage from '../page/moduleUser/LoginPage';
 import TestPage from '../page/TestPage';
-import SettingPage from '../page/SettingPage';
+import SettingPage from '../page/moduleUser/SettingPage';
 
 const MainNavigator = createStackNavigator({
   Main: {
