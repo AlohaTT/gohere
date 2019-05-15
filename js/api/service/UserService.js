@@ -3,4 +3,5 @@ export default {
   GETUSERINFO:'lyjfapp/api/v1/user/detail',
   LOGIN:'lyjfapp/sso/login',
   LOGOUT:'lyjfapp/sso/logout',
+  VIPCARD:'lyjfapp/api/v1/ctrade/findPurchaseInfos',
 };

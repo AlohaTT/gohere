@@ -10,10 +10,6 @@ import NavigationUtil from '../../util/NavigationUtil';
 import ImageText from '../../components/ImageText';
 
 class MinePage extends Component {
-  componentDidMount() {
-    const { checkLogin, } = this.props;
-    checkLogin();
-  }
 
   _loginPress = () => {
     NavigationUtil.goPage({}, RouteHub.LOGIN);
@@ -23,11 +19,11 @@ class MinePage extends Component {
     const { userInfo, navigation, } = this.props;
     const Header = () => {
       if (userInfo && JSON.stringify(userInfo) != '{}') {
-        return <LoginHeader />;
+        return <LoginHeader userInfo={userInfo}/>;
       }
       return <UnLoginHeader
         onPress={this._loginPress}
-             />;
+      />;
     };
     return (
       <View style={[styles.container, { paddingTop: 32, },]}>
@@ -57,24 +53,25 @@ class LoginHeader extends Component {
   }
 
   render() {
+    const {userInfo,} =this.props;
     return (
       <View style={{ paddingHorizontal: DimenFlags.HorizontalMargin, }}>
         <View style={[styles.row, { marginBottom: 23, },]}>
           <WingBlank>
-            <Image source={require('../../res/drawable/ic_avater.png')}
+            <Image source={{uri:userInfo.iconUrl,}}
               style={styles.avater}
             />
           </WingBlank>
 
           <View style={[styles.column, { flex: 1, },]}>
-            <Text style={{ fontSize: 16, color: ColorFlags.Black, }}>李先生</Text>
+            <Text style={{ fontSize: 16, color: ColorFlags.Black, }}>{userInfo.userName}</Text>
             <View style={styles.row}>
-              <Text>Lv2</Text>
+              <Text>Lv{userInfo.userLevel}</Text>
               <WingBlank>
                 <Text style={{ fontSize: 14, color: ColorFlags.Grey, }}>会员权益</Text>
               </WingBlank>
             </View>
-            <Text style={{ fontSize: 12, color: ColorFlags.Grey, }}>UID:62562356</Text>
+            <Text style={{ fontSize: 12, color: ColorFlags.Grey, }}>UID:{userInfo.userId}</Text>
           </View>
 
           <TouchableOpacity onPress={()=>{NavigationUtil.goPage({},RouteHub.SETTING);}}>
@@ -89,7 +86,7 @@ class LoginHeader extends Component {
             style={styles.imageButton}
           />
         </View>
-        <Account />
+        <Account userInfo={userInfo}/>
       </View>
     );
   }
@@ -97,6 +94,7 @@ class LoginHeader extends Component {
 
 class Account extends Component {
   render() {
+    const {userInfo,} = this.props;
     return (
       <View style={{ backgroundColor: ColorFlags.Green, padding: 20, borderRadius: 5, }}>
         <View style={[styles.row, { justifyContent: 'space-between', },]}>
@@ -165,7 +163,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  checkLogin: () => dispatch(action.checkLogin()),
+  // checkLogin: () => dispatch(action.checkLogin()),
 
 });
 

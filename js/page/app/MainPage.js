@@ -2,8 +2,13 @@ import React, { Component, } from 'react';
 import { connect, } from 'react-redux';
 import MainTabNavigator from '../../navigator/MainTabNavigator';
 import NavigationUtil from '../../util/NavigationUtil';
+import action from '../../action';
 
 export class MainPage extends Component {
+  componentDidMount() {
+    const{checkLogin,} = this.props;
+    checkLogin();
+  }
 
   render() {
     NavigationUtil.navigation = this.props.navigation;
@@ -15,8 +20,10 @@ const mapStateToProps = (state) => ({
   nav: state.nav,
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps = dispatch => ({
+  checkLogin: () => dispatch(action.checkLogin()),
 
-};
+});
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
