@@ -14,7 +14,7 @@ class SettingPage extends Component {
 
   render() {
     const version = DeviceInfo.getVersion();
-    const { userInfo, logout,} = this.props;
+    const { userInfo, logout,navigation, } = this.props;
     return (
       <View>
         <List>
@@ -25,16 +25,13 @@ class SettingPage extends Component {
           </Item>
           <Item arrow="horizontal"
             disabled
-            onPress={() => logout()}
           >
             关于我们
           </Item>
         </List>
         {userInfo && JSON.stringify(userInfo) != '{}' ?
-          <Button >退出当前账号</Button> : null}
-
+          <Button onPress={()=>logout(navigation)}>退出当前账号</Button> : null}
       </View>
-
     );
   }
 }
@@ -44,7 +41,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logout:() => dispatch(action.logout()),
+  logout: (navigation) => dispatch(action.logout(navigation)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingPage);

@@ -41,22 +41,20 @@ export function onUserInfoUpdate(dispatch) {
 export function login(params, navigation) {
   return (dispatch) => {
     const { userName, } = params;
-    _storeUsername(userName)
-      .then(fetchData(UserService.LOGIN, params)
-        .then((token) => {
-          /**
+
+    _storeUsername(userName).then(() => {
+      fetchData(UserService.LOGIN, params).then((token) => {
+        /**
           |--------------------------------------------------
           | 保存token
           |--------------------------------------------------
           */
-          _storeUsername();
-          return AsyncStorage.setItem(Constants.TOKEN, token);
-        })
-        .then(onUserInfoUpdate(dispatch))
-        .then(() => {
-          NavigationUtil.goBack(navigation);
-        }
-        ));
+        _storeUsername();
+        AsyncStorage.setItem(Constants.TOKEN, token)
+          .then(onUserInfoUpdate(dispatch));
+      }).then(() => NavigationUtil.goBack(navigation));
+    }
+    );
   };
 }
 
@@ -69,7 +67,7 @@ export function logout(navigation) {
     fetchData(UserService.LOGOUT)
       .then(() => {
         NavigationUtil.goBack(navigation);
-        dispatch({type:type.USER_UPDATE,userInfo:null,});
+        dispatch({ type: type.USER_UPDATE, userInfo: null, });
       });
   };
 

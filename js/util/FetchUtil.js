@@ -1,5 +1,6 @@
 import { BASE_URL, } from '../api/Api';
 import { ToastAndroid, AsyncStorage, } from 'react-native';
+import Constants from '../Constants';
 
 const DEFAULT_URL = BASE_URL;
 
@@ -25,15 +26,17 @@ export function fetchData(url, param = {}, method = POST) {
         })
         .then((json) => {
           if (json.code === 0) {
-            resolve(json.result);
+            return resolve(json.result);
           } else {
             console.log(json.message);
-            ToastAndroid.show(json.message, ToastAndroid.SHORT);
-            reject(json.message);
+            throw new Error(json.message);
+            return reject(json.message);
           }
         })
         .catch((error) => {
-          reject(error);
+          console.log(error);
+          ToastAndroid.show(error, ToastAndroid.SHORT);
+          return;
         });
     });
   });
@@ -79,6 +82,6 @@ function genGetBody(token, param, url) {
 }
 
 const _getToken = async () => {
-  return await AsyncStorage.getItem('token');
+  return await AsyncStorage.getItem(Constants.TOKEN);
 };
 
