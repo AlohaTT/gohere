@@ -40,7 +40,7 @@ class VipRightsPage extends Component {
       imageStyle={{ resizeMode: 'stretch', }}
       source={this.IMAGES[index]}
       style={{ width: 137, height: 198, }}
-    >
+           >
       <View style={{ marginLeft: 14, marginTop: 114, }}>
         <Text>{item.vipTypeName} </Text>
         <Text>{item.vipMoney}</Text>

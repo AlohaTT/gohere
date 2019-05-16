@@ -1,13 +1,12 @@
 import React, { Component, } from 'react';
-import { View, Text, StyleSheet, Image,TouchableOpacity, } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect, } from 'react-redux';
 import ThemeFactory, { ColorFlags, DimenFlags, } from '../../res/style/ThemeFactory';
-import { WhiteSpace, WingBlank, Button, } from '@ant-design/react-native';
-import action from '../../action';
+import { WhiteSpace, WingBlank, Button, List, } from '@ant-design/react-native';
 import RouteHub from '../../RouteHub';
 import NavigationUtil from '../../util/NavigationUtil';
-import ImageText from '../../components/ImageText';
+import Item from '@ant-design/react-native/lib/list/ListItem';
 
 class MinePage extends Component {
 
@@ -19,29 +18,58 @@ class MinePage extends Component {
     const { userInfo, navigation, } = this.props;
     const Header = () => {
       if (userInfo && JSON.stringify(userInfo) != '{}') {
-        return <LoginHeader userInfo={userInfo}/>;
+        return <LoginHeader userInfo={userInfo} />;
       }
       return <UnLoginHeader
         onPress={this._loginPress}
       />;
     };
     return (
-      <View style={[styles.container, { paddingTop: 32, },]}>
+      <View style={[styles.container,]}>
         <Header />
-        <View style={[styles.row, { justifyContent: 'space-between', },]}>
-          <ImageText
-            text={'全部订单'}
-          />
-          <ImageText
-            text={'待出行'}
-          />
-          <ImageText
-            text={'待支付'}
-          />
-          <ImageText
-            text={'退款单'}
-          />
+        <View style={[styles.row, { justifyContent: 'space-between', padding: 23, backgroundColor: 'white', },]}>
+          <View style={styles.imageWrapper}>
+            <Image
+              source={require('../../res/drawable/user_all_orders.png')}
+              style={styles.imageFunc}
+            />
+            <Text>全部订单</Text>
+          </View>
+          <View style={styles.imageWrapper}>
+            <Image
+              source={require('../../res/drawable/user_staying.png')}
+              style={styles.imageFunc}
+            />
+            <Text>待出行</Text>
+          </View>
+          <View style={styles.imageWrapper}>
+            <Image
+              source={require('../../res/drawable/user_to_be_paid.png')}
+              style={styles.imageFunc}
+            />
+            <Text>待支付</Text>
+          </View>
+          <View style={styles.imageWrapper}>
+            <Image
+              source={require('../../res/drawable/user_refund_form.png')}
+              style={styles.imageFunc}
+            />
+            <Text>退款单</Text>
+          </View>
         </View>
+        <WhiteSpace />
+        <List>
+          <Item arrow="horizontal">邀请好友</Item>
+          <Item arrow="horizontal">收藏</Item>
+          <Item arrow="horizontal">我的银行卡</Item>
+          <Item arrow="horizontal">房券</Item>
+          <Item arrow="horizontal">地址</Item>
+          <Item arrow="horizontal">常用旅客</Item>
+        </List>
+        <WhiteSpace />
+        <List>
+          <Item arrow="horizontal">安全中心</Item>
+        </List>
       </View>
     );
   }
@@ -53,12 +81,12 @@ class LoginHeader extends Component {
   }
 
   render() {
-    const {userInfo,} =this.props;
+    const { userInfo, } = this.props;
     return (
-      <View style={{ paddingHorizontal: DimenFlags.HorizontalMargin, }}>
+      <View style={{ paddingHorizontal: DimenFlags.HorizontalMargin, backgroundColor: 'white', paddingTop: 32, }}>
         <View style={[styles.row, { marginBottom: 23, },]}>
           <WingBlank>
-            <Image source={{uri:userInfo.iconUrl,}}
+            <Image source={{ uri: userInfo.iconUrl, }}
               style={styles.avater}
             />
           </WingBlank>
@@ -74,7 +102,7 @@ class LoginHeader extends Component {
             <Text style={{ fontSize: 12, color: ColorFlags.Grey, }}>UID:{userInfo.userId}</Text>
           </View>
 
-          <TouchableOpacity onPress={()=>{NavigationUtil.goPage({},RouteHub.SETTING);}}>
+          <TouchableOpacity onPress={() => { NavigationUtil.goPage({}, RouteHub.SETTING); }}>
             <Image
               source={require('../../res/drawable/ic_setting.png')}
               style={[styles.imageButton, { marginRight: 17, },]}
@@ -86,7 +114,7 @@ class LoginHeader extends Component {
             style={styles.imageButton}
           />
         </View>
-        <Account userInfo={userInfo}/>
+        <Account userInfo={userInfo} />
       </View>
     );
   }
@@ -94,7 +122,7 @@ class LoginHeader extends Component {
 
 class Account extends Component {
   render() {
-    const {userInfo,} = this.props;
+    const { userInfo, } = this.props;
     return (
       <View style={{ backgroundColor: ColorFlags.Green, padding: 20, borderRadius: 5, }}>
         <View style={[styles.row, { justifyContent: 'space-between', },]}>
@@ -121,7 +149,7 @@ class UnLoginHeader extends Component {
 
   render() {
     return (
-      <View style={[styles.row, { alignItems: 'center', },]}>
+      <View style={[styles.row, { alignItems: 'center', paddingTop: 32, backgroundColor: 'white', paddingHorizontal:DimenFlags.HorizontalMargin,},]}>
 
         <Image
           source={require('../../res/drawable/ic_avater.png')}
@@ -139,6 +167,7 @@ class UnLoginHeader extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F3F7F9',
   },
   row: {
     flexDirection: 'row',
@@ -155,6 +184,15 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
+  },
+  imageFunc: {
+    marginBottom: 14,
+    width: 30,
+    height: 30,
+  },
+  imageWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
