@@ -6,15 +6,37 @@ import { List, Button, } from '@ant-design/react-native';
 import Item from '@ant-design/react-native/lib/list/ListItem';
 import DeviceInfo from 'react-native-device-info';
 import action from '../../action/index';
+import BackPressComponent from '../../components/BackPressComponent';
+import NavigationUtil from '../../util/NavigationUtil';
 
 class SettingPage extends Component {
   static propTypes = {
     prop: PropTypes,
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    };
+    this.backPress = new BackPressComponent({ backPress: (e) => NavigationUtil.goBack(this.props.navigation), });
+  }
+
+  componentDidMount() {
+    this.backPress.componentDidMount();
+  }
+
+  componentWillUnmount() {
+    this.backPress.componentWillUnmount();
+  }
+
+
+
+
   render() {
     const version = DeviceInfo.getVersion();
-    const { userInfo, logout,navigation, } = this.props;
+    const { userInfo, logout, navigation, } = this.props;
     return (
       <View>
         <List>
@@ -30,7 +52,7 @@ class SettingPage extends Component {
           </Item>
         </List>
         {userInfo && JSON.stringify(userInfo) != '{}' ?
-          <Button onPress={()=>logout(navigation)}>退出当前账号</Button> : null}
+          <Button onPress={() => logout(navigation)}>退出当前账号</Button> : null}
       </View>
     );
   }

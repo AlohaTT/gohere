@@ -11,9 +11,6 @@ import SettingPage from '../page/moduleUser/SettingPage';
 const MainNavigator = createStackNavigator({
   Main: {
     screen:MainPage,
-    navigationOptions: {
-      header: null,
-    },
   },
   Login:{
     screen:LoginPage,
@@ -27,6 +24,8 @@ const MainNavigator = createStackNavigator({
   Test:{
     screen:TestPage,
   },
+}, {
+  headerMode: 'none',
 });
 
 const SplashNavigator = createStackNavigator({
@@ -41,6 +40,8 @@ const SplashNavigator = createStackNavigator({
 const AppNavigator = createSwitchNavigator({
   Splash: SplashNavigator,
   Main: MainNavigator,
+},{
+  headerMode: 'none',
 });
 export const navReducer = createNavigationReducer(AppNavigator);
 

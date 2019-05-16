@@ -17,6 +17,11 @@ class VipRightsPage extends Component {
       cardList: [],
       inputValue: '',
     };
+    this.IMAGES = [require('../../res/drawable/user_level_card_1.webp'),
+      require('../../res/drawable/user_level_card_2.webp'),
+      require('../../res/drawable/user_level_card_3.webp'),
+      require('../../res/drawable/user_level_card_4.webp'),
+      require('../../res/drawable/user_level_card_5.webp'),];
 
   }
 
@@ -30,26 +35,18 @@ class VipRightsPage extends Component {
       });
   }
 
-
-  _renderItem = (item, index) => {
-    const IMAGES = ['../../res/drawable/user_level_card_1.webp',
-      '../../res/drawable/user_level_card_2.webp',
-      '../../res/drawable/user_level_card_3.webp',
-      '../../res/drawable/user_level_card_4.webp',
-      '../../res/drawable/user_level_card_5.webp',];
+  _renderItem = ({ item, index, }, ) => {
     return <ImageBackground
       imageStyle={{ resizeMode: 'stretch', }}
-      source={require('../../res/drawable/user_level_card_1.webp')}
+      source={this.IMAGES[index]}
       style={{ width: 137, height: 198, }}
     >
       <View style={{ marginLeft: 14, marginTop: 114, }}>
-        <Text>{item.item.vipTypeName} </Text>
-        <Text>{item.item.vipMoney}</Text>
+        <Text>{item.vipTypeName} </Text>
+        <Text>{item.vipMoney}</Text>
       </View>
-
     </ImageBackground>;
   }
-
 
   render() {
     const { userInfo, } = this.props;
