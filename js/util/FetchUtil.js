@@ -30,13 +30,13 @@ export function fetchData(url, param = {}, method = POST) {
           } else {
             console.log(json.message);
             throw new Error(json.message);
-            return reject(json.message);
+            // return reject(json.message);
           }
         })
         .catch((error) => {
           console.log(error);
-          ToastAndroid.show(error, ToastAndroid.SHORT);
-          return;
+          ToastAndroid.show(error.message, ToastAndroid.SHORT);
+          // return;
         });
     });
   });

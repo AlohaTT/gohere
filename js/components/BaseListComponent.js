@@ -9,6 +9,12 @@ export default class BaseListComponent extends Component {
   static propTypes = {
     url: PropTypes.string,
     renderItem: PropTypes.func,
+    numColumns: PropTypes.number,
+    header:PropTypes.func,
+  }
+
+  static defaultProps={
+    numColumns:1,
   }
 
   _onFetch = (page = 1, startFetch, abortFetch) => {
@@ -29,6 +35,8 @@ export default class BaseListComponent extends Component {
   render() {
     return (
       <ListView
+        header={this.props.header}
+        numColumns={this.props.numColumns}
         onFetch={this._onFetch}
         renderItem={this.props.renderItem}
       />

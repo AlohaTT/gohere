@@ -1,11 +1,11 @@
 import React, { Component, } from 'react';
-import { View, Text, Image, ImageBackground, } from 'react-native';
+import { View, Text, Image, ImageBackground,} from 'react-native';
 import { connect, } from 'react-redux';
 import { DimenFlags, ColorFlags, } from '../../res/style/ThemeFactory';
 import { Button, WhiteSpace, WingBlank, InputItem, List, } from '@ant-design/react-native';
 import NavigationUtil from '../../util/NavigationUtil';
 import RouteHub from '../../RouteHub';
-import { FlatList, } from 'react-native-gesture-handler';
+import { FlatList, ScrollView, } from 'react-native-gesture-handler';
 import { fetchData, } from '../../util/FetchUtil';
 import UserService from '../../api/service/UserService';
 
@@ -40,7 +40,7 @@ class VipRightsPage extends Component {
       imageStyle={{ resizeMode: 'stretch', }}
       source={this.IMAGES[index]}
       style={{ width: 137, height: 198, }}
-           >
+    >
       <View style={{ marginLeft: 14, marginTop: 114, }}>
         <Text>{item.vipTypeName} </Text>
         <Text>{item.vipMoney}</Text>
@@ -51,7 +51,7 @@ class VipRightsPage extends Component {
   render() {
     const { userInfo, } = this.props;
     return (
-      <View>
+      <ScrollView>
         <View style={{ backgroundColor: '#83EECC', height: 120, }}>
           <Text style={{ alignSelf: 'center', fontSize: 18, color: '#009073', }}> Vip权益 </Text>
         </View >
@@ -106,7 +106,7 @@ class VipRightsPage extends Component {
 
           </WingBlank>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -143,12 +143,9 @@ class LoginHeader extends Component {
           <Text >Lv{userInfo.userLevel}</Text>
         </View>
       </View>
-
     );
   }
 }
-
-
 
 const mapStateToProps = (state) => ({
   userInfo: state.user.userInfo,

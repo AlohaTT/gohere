@@ -2,7 +2,7 @@
  * @Author: Tony
  * @Date: 2019-05-10 17:48:42
  * @Last Modified by: Tony
- * @Last Modified time: 2019-05-15 11:28:43
+ * @Last Modified time: 2019-05-16 16:57:36
  */
 import React, { Component, } from 'react';
 import { View, Text, Image, } from 'react-native';
@@ -33,7 +33,7 @@ class Item extends Component {
         <WhiteSpace/>
         <WingBlank style={{ flexDirection: 'row', alignItems:'center',}}>
           <Image source={{ uri: data.imageList[0].url, }}
-            style={{ width: 114, height: 86, resizeMode: 'contain',borderRadius:5, }}
+            style={{ width: 114, height: 86, resizeMode: 'contain',borderRadius:5, marginRight:9,}}
           />
           <View style={{flex:1,}}>
             <Text>{data.hotelName}</Text>

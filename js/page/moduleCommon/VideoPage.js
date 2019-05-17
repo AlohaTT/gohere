@@ -10,6 +10,7 @@ class VideoPage extends Component {
   render() {
     return (
       <BaseListComponent
+        header={()=>(<Text style={{fontSize:20,color:ColorFlags.Black,fontWeight:'bold',margin:20,}}>当红精选</Text>)}
         renderItem={(data) => {
           return <Item data={data} />;
         }}

@@ -31,6 +31,7 @@ export const ColorFlags = {
   BlueGrey: '#607D8B',
   Black: '#000000',
   White: '#FFFFFF',
+  Background:'#F3F7F9',
 };
 
 export const DimenFlags ={
